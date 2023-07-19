@@ -25,6 +25,11 @@
     ansible.builtin.package:
       name: mongodb-org
       state: present
+
+  - name: Start mongodb
+    ansible.builtin.service:
+    name: mongod
+    state: started
     
 
 
