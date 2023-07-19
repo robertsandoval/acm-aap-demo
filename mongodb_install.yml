@@ -5,6 +5,11 @@
   become: true
 
   tasks: 
+  - name: Install git 
+    ansible.builtin.package:
+      name: git
+      state: present 
+      
   - name: Clone git to local server 
     ansible.builtin.git:
       repo: https://github.com/angelavuong/acm-aap-demo/
