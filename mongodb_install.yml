@@ -1,0 +1,14 @@
+---
+- name: Install MongoDB
+  hosts: database 
+  gather_facts: false 
+  become: true
+
+  tasks: 
+  - name: Clone git to local server 
+    ansible.builtin.git:
+      repo: 
+    
+
+
+
