@@ -13,11 +13,11 @@
   - name: Clone git to local server 
     ansible.builtin.git:
       repo: https://github.com/angelavuong/acm-aap-demo/
-      dest: /home/ec2-user/acm-aap-demo/
+      dest: /home/ec2-user/github/
 
   - name: Copy MongoDB file to repo directory 
     ansible.builtin.copy:
-      src: /home/ec2-user/acm-aap-demo/mongodb-org-6.0.repo 
+      src: /home/ec2-user/github/acm-aap-demo/mongodb-org-6.0.repo 
       dest: /etc/yum.repos.d/mongodb-org-6.0.repo 
       
   - name: Install package mongodb-org
