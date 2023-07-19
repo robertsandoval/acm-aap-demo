@@ -20,3 +20,6 @@ vpc_name: ansible-vpc
 cidr_block: "10.10.0.0/16"
 cidr: "10.10.0.0/24"
 ```
+## MongoDB repository
+
+Install instructions came from [MongoDB documentation](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/)
