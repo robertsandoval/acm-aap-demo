@@ -17,7 +17,8 @@
 
   - name: Copy MongoDB file to repo directory 
     ansible.builtin.copy:
-      remote_src: /home/ec2-user/acm-aap-demo/mongodb-org-6.0.repo 
+      remote_src: true
+      src: /home/ec2-user/acm-aap-demo/mongodb-org-6.0.repo 
       dest: /etc/yum.repos.d/mongodb-org-6.0.repo 
       
   - name: Install package mongodb-org
