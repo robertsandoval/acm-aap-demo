@@ -9,6 +9,7 @@
       with_items:
         - postgresql
         - postgresql-server
+        - postgresql-devel
 
     - name: "Install Python packages"
       ansible.builtin.pip: "name={{ item }}  state=present"
