@@ -67,3 +67,9 @@
       become: yes
       become_user: postgres
       notify: restart postgres
+
+  handlers:
+    - name: restart postgres
+      ansible.builtin.service: 
+        name: postgres
+        state: restarted
