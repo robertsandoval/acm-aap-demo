@@ -51,8 +51,13 @@
       become: yes
       become_user: postgres
 
+    - name: Set listen_addresses in postgresql.conf to all"
+      community.postgreql.postgresql_set: 
+        name: listen_addresses
+        value: "*"
+        
     - name: "Modify the pg_hba.conf file to allow external connections"
-      postgresql_pg_hba:
+      community.postgreql.postgresql_pg_hba:
         dest: "~/data/pg_hba.conf"
         contype: host
         databases: all
