@@ -80,3 +80,6 @@
       ansible.builtin.add_host:
         name: "{{ ec2.public_ip }}"
         group: database
+
+    - ansible.builtin.debug:
+        msg: "Added new host to group 'database'"
