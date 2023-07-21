@@ -74,5 +74,5 @@
   handlers:
     - name: restart postgres
       ansible.builtin.service: 
-        name: postgres
+        name: postgresql
         state: restarted
