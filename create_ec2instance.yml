@@ -86,7 +86,7 @@
         state: present
         hosts:
           - "{{ ec2.instances[0].public_dns_name }}"
-        preserve_exisitng_hosts: true
+        preserve_existing_hosts: true
         preserve_existing_children: true
 
     - ansible.builtin.debug:
