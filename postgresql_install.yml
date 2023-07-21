@@ -51,7 +51,7 @@
       become: yes
       become_user: postgres
 
-    - name: "Allow md5 connection for all connections 0.0.0.0/0 for all users"
+    - name: "Modify the pg_hba.conf file to allow external connections"
       postgresql_pg_hba:
         dest: "~/data/pg_hba.conf"
         contype: host
