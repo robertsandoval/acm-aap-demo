@@ -58,9 +58,9 @@
         routes: 
           - dest: 0.0.0.0/0
             gateway_id: "{{ igw.gateway_id }}"
-        register: routetable
-        until: routetable is not failed
-        retries: 5
+      register: routetable
+      until: routetable is not failed
+      retries: 5
 
     - name: Launch an EC2 Instance
       amazon.aws.ec2_instance:
