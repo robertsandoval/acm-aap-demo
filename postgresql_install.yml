@@ -51,13 +51,13 @@
       become: yes
       become_user: postgres
 
-    - name: "Allow md5 connection for the db user"
+    - name: "Allow md5 connection for all connections 0.0.0.0/0 for all users"
       postgresql_pg_hba:
         dest: "~/data/pg_hba.conf"
         contype: host
         databases: all
+        address: "0.0.0.0/0"
         method: md5
-        users: "{{ db_user }}"
         create: true
       become: yes
       become_user: postgres
