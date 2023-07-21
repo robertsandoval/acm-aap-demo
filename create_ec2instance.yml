@@ -42,7 +42,6 @@
 
     - name: Create VPC IGW 
       amazon.aws.ec2_vpc_igw:
-        name: "Ansible-IGW"
         region: "{{ region }}"
         vpc_id: "{{ vpc.vpc.id }}"
         register: igw
@@ -51,7 +50,6 @@
 
     - name: Set VPC public subnet route table
       amazon.aws.ec2_vpc_route_table:
-        name: "Ansible-Route-Table"
         region: "{{ region }}"
         vpc_id: "{{ vpc.vpc.id }}"
         subnets:
