@@ -75,9 +75,9 @@
         network:
           assign_public_ip: true
         image_id: "{{ ami }}"
-        register: ec2
         tags:
           App: database
+      register: ec2
 
     - name: Add new instance to host group 'database'
       ansible.builtin.add_host:
