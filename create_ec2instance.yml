@@ -84,7 +84,7 @@
     # Domain example - postgresql
     # Value = public IP address of the EC2 instance
 
-    - name: Create DNS record for our server
+    - name: Create DNS record in Route53 for our server
       amazon.aws.route53:
       state: present
       zone: 
