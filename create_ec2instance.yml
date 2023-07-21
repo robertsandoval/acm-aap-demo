@@ -79,16 +79,16 @@
           App: database
       register: ec2
 
-    - name: Add new instance to host group 'database'
-      awx.awx.group:
-        name: database
-        inventory: AWS Inventory
-        state: present
-        hosts:
-          - "{{ ec2.instances[0].public_dns_name }}"
-        preserve_existing_hosts: true
-        preserve_existing_children: true
-        controller_config_file: "~/tower_cli.cfg"
+    # - name: Add new instance to host group 'database'
+    #   awx.awx.group:
+    #     name: database
+    #     inventory: AWS Inventory
+    #     state: present
+    #     hosts:
+    #       - "{{ ec2.instances[0].public_dns_name }}"
+    #     preserve_existing_hosts: true
+    #     preserve_existing_children: true
+    #     controller_config_file: "~/tower_cli.cfg"
 
-    - ansible.builtin.debug:
-        msg: "Added new host to group 'database'"
+    # - ansible.builtin.debug:
+    #     msg: "Added new host to group 'database'"
