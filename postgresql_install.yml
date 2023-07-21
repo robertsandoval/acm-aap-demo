@@ -27,14 +27,14 @@
         - postgresql
 
     - name: "Create app database"
-      postgresql_db:
+      community.postgresql.postgresql_db:
         state: present
         name: "{{ db_name }}"
       become: yes
       become_user: postgres
 
     - name: "Create db user"
-      postgresql_user:
+      community.postgresql.postgresql_user:
         state: present
         name: "{{ db_user }}"
         password: "{{ db_password }}"
@@ -42,7 +42,7 @@
       become_user: postgres
 
     - name: "Grant db user access to app db"
-      postgresql_privs:
+      community.postgresql.postgresql_privs:
         type: database
         database: "{{ db_name }}"
         roles: "{{ db_user }}"
@@ -52,12 +52,12 @@
       become_user: postgres
 
     - name: Set listen_addresses in postgresql.conf to all"
-      community.postgreql.postgresql_set: 
+      community.postgresql.postgresql_set: 
         name: listen_addresses
         value: "*"
         
     - name: "Modify the pg_hba.conf file to allow external connections"
-      community.postgreql.postgresql_pg_hba:
+      community.postgresql.postgresql_pg_hba:
         dest: "~/data/pg_hba.conf"
         contype: host
         databases: all
