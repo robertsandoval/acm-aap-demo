@@ -74,3 +74,5 @@
         network:
           assign_public_ip: true
         image_id: "{{ ami }}"
+        tags:
+          Application: database
