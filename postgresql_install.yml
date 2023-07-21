@@ -63,7 +63,7 @@
       become_user: postgres
       notify: restart postgres
 
-    - name: "Set listen_addresse = '*' in postgresql.auto.conf"
+    - name: "Set listen_addresses = '*' in postgresql.auto.conf"
       community.postgresql.postgresql_set: 
         name: listen_addresses
         value: "*"
