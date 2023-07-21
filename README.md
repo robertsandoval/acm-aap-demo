@@ -6,6 +6,7 @@ Before using these playbooks, you need to have the following:
 
 - An AWS account
 - [Ansible Automation Platform](https://developers.redhat.com/products/ansible/download) is installed on your local machine
+- Create an SSH key pair in AWS account for your EC2 instance
 
 ## Using the playbook 
 When using the create_ec2instance.yml playbook, be sure to specify the variables:
