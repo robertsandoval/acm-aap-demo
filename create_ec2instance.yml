@@ -74,8 +74,6 @@
         network:
           assign_public_ip: true
         image_id: "{{ ami }}"
-        tags:
-          Application: database
         register: ec2
 
     - name: Add new instance to host group 'database'
