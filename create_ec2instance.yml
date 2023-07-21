@@ -83,3 +83,11 @@
     # Create A record for sandbox hosted zone - sandbox XXXX
     # Domain example - postgresql
     # Value = public IP address of the EC2 instance
+
+    - name: Create DNS record for our server
+      amazon.aws.route53:
+      state: present
+      zone: 
+      record: "{{ ec2_instance_name }}.{{ zone }}"
+      type: A
+      value: "{{ ec2.instances[0].public_dns_name }}"
