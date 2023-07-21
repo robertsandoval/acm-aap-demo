@@ -64,7 +64,7 @@
         register: routetable
         until: routetable is not failed
         retries: 5
-    
+
     - name: Launch an EC2 Instance
       amazon.aws.ec2_instance:
         name: "{{ ec2_instance_name }}"
