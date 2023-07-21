@@ -4,21 +4,25 @@
   tasks:
     - name: Create a new VPC 
       amazon.aws.ec2_vpc_net:
-        name: "Ansible-Test"
+        name: "Ansible-VPC"
         cidr_block: "{{ cidr_block }}"
         region: "{{ region }}"
       register: vpc
   
     - name: Create a new Subnet
       amazon.aws.ec2_vpc_subnet:
+        name: "Ansible-Subnet"
         cidr: "{{ cidr }}"
         region: "{{ region }}"
         vpc_id: "{{ vpc.vpc.id }}"
       register: subnet
+
+    - ansible.builtin.debug:
+        var: subnet.subnet.id
     
     - name: Create a Security Group  
       amazon.aws.ec2_security_group:
-        name: "Ansible-Test-Security-Group"
+        name: "Ansible-Security-Group"
         description: "Ansible-Testing"
         vpc_id: "{{ vpc.vpc.id }}"
         region: "{{ region }}"
@@ -38,8 +42,28 @@
     - ansible.builtin.debug:
         var: security_group.group_id
 
-    - ansible.builtin.debug:
-        var: subnet.subnet.id
+    - name: Create VPC IGW 
+      amazon.aws.ec2_vpc_igw:
+        name: "Ansible-IGW"
+        region: "{{ region }}"
+        vpc_id: "{{ vpc.vpc.id }}"
+        register: igw
+        until: igw is not failed
+        retries: 15 
+
+    - name: Set VPC public subnet route table
+      amazon.aws.ec2_vpc_route_table:
+        name: "Ansible-Route-Table"
+        region: "{{ region }}"
+        vpc_id: "{{ vpc.vpc.id }}"
+        subnets:
+          - "{{ subnet.subnet.id }}"
+        routes: 
+          - dest: 0.0.0.0/0
+            gateway_id: "{{ igw.gateway_id }}"
+        register: routetable
+        until: routetable is not failed
+        retries: 5
     
     - name: Launch an EC2 Instance
       amazon.aws.ec2_instance:
