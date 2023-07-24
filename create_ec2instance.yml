@@ -79,10 +79,10 @@
           App: database
       register: ec2
       
-    - name: Sleep for 30 seconds and continue with play
-      ansible.builtin.wait_for:
-        timeout: 30
-        
+    - name: Pause for 5 minutes to build app cache
+      ansible.builtin.pause:
+        seconds: 30
+
     - ansible.builtin.debug:
         var: ec2.instances[0].public_ip_address
 
