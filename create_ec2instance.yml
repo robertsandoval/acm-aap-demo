@@ -21,7 +21,6 @@
     
     - name: Create a Security Group  
       amazon.aws.ec2_security_group:
-        state: running
         name: "Ansible-Security-Group"
         description: "Ansible Security Group - allow port 80 and 22"
         vpc_id: "{{ vpc.vpc.id }}"
