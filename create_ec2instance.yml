@@ -92,5 +92,5 @@
         controller_host: "{{ controller_host }}"
         controller_oauthtoken: "{{ controller_oauthtoken }}"
         name: "AWS Environment"
-        inventory: "AWS Inventory"
+        inventory: "AWS-Target-Inventory"
         organization: Default
