@@ -85,6 +85,7 @@
     - name: Create DNS record in Route53 for our server
       amazon.aws.route53:
         state: present
+        overwrite: true
         zone: "sandbox1405.opentlc.com"
         record: "{{ ec2_instance_name }}.sandbox1405.opentlc.com"
         type: A
