@@ -79,11 +79,6 @@
           App: database
       register: ec2
 
-    # Route 53
-    # Create A record for sandbox hosted zone - sandbox XXXX
-    # Domain example - postgresql
-    # Value = public IP address of the EC2 instance
-
     - name: Create DNS record in Route53 for our server
       amazon.aws.route53:
         state: present
@@ -91,3 +86,9 @@
         record: "{{ ec2_instance_name }}.sandbox1728.opentlc.com"
         type: A
         value: "{{ ec2.instances[0].public_ip_address }}"
+
+    - name: Update Controller AWS Inventory with new EC2 instance
+      awx.awx.inventory_source_update:
+        name: "AWS Environment"
+        inventory: "AWS Inventory"
+        organization: Default
