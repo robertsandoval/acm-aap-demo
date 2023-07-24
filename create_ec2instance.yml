@@ -79,6 +79,9 @@
           App: database
       register: ec2
 
+    - ansible.builtin.debug:
+        var: "{{ ec2.instances[0].public_ip_address }}"
+
     - name: Create DNS record in Route53 for our server
       amazon.aws.route53:
         state: present
