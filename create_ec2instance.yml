@@ -36,6 +36,11 @@
             - 22
             cidr_ip: 0.0.0.0/0
             rule_desc: "allow all on port 22"
+          - proto: tcp
+            ports:
+            - 5432
+            cidr_ip: 0.0.0.0/0
+            rule_desc: "allow all on port 5432"
       register: security_group
     
     - ansible.builtin.debug:
