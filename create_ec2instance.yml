@@ -92,8 +92,8 @@
       amazon.aws.route53:
         state: present
         overwrite: true
-        zone: "sandbox1405.opentlc.com"
-        record: "{{ ec2_instance_name }}.sandbox1405.opentlc.com"
+        zone: "sandbox2577.opentlc.com"
+        record: "{{ ec2_instance_name }}.sandbox2577.opentlc.com"
         type: A
         value: "{{ ec2.instances[0].public_ip_address }}"
 
