@@ -101,6 +101,6 @@
       awx.awx.inventory_source_update:
         controller_host: "{{ controller_host }}"
         controller_oauthtoken: "{{ controller_oauthtoken }}"
-        name: "AWS-Target-Source"
-        inventory: "AWS-Target-Inventory"
+        name: "AWS-source"
+        inventory: "ACM-inventory"
         organization: Default
