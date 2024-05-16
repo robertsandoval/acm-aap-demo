@@ -104,3 +104,4 @@
         name: "AWS-source"
         inventory: "ACM-inventory"
         organization: Default
+        validate_certs: false
