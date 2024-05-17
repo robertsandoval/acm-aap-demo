@@ -85,18 +85,6 @@
           App: database
       register: ec2
 
-    - ansible.builtin.debug:
-        var: ec2.instances[0].public_ip_address
-
-    - name: Create DNS record in Route53 for our server
-      amazon.aws.route53:
-        state: present
-        overwrite: true
-        zone: "sandbox2633.opentlc.com"
-        record: "{{ ec2_instance_name }}.sandbox2633.opentlc.com"
-        type: A
-        value: "{{ ec2.instances[0].public_ip_address }}"
-
     - name: Update Controller AWS Inventory with new EC2 instance
       awx.awx.inventory_source_update:
         controller_host: "{{ controller_host }}"
